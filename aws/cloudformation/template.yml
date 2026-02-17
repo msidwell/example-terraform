@@ -68,7 +68,12 @@ Resources:
       Engine: postgres
       EngineVersion: '11.14'
       StorageEncrypted: true
-      CopyTagsToSnapshot: truez
+      CopyTagsToSnapshot: true
+      CloudwatchLogsExportConfiguration:
+        EnableLogTypes:
+          - "error"
+          - "slowquery"
+        DisableLogTypes: []
       DBInstanceClass: db.t4g.medium
       DBName: mydb
       MasterUsername: admin
