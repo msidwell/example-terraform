@@ -6,7 +6,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-005e54dee72cc1d00
-      InstanceType: m3.xlarge
+      InstanceType: m3.2xlarge
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
           Ebs:
@@ -68,7 +68,7 @@ Resources:
       Engine: postgres
       EngineVersion: '11.14'
       StorageEncrypted: true
-      CopyTagsToSnapshot: true
+      CopyTagsToSnapshot: truez
       DBInstanceClass: db.t4g.medium
       DBName: mydb
       MasterUsername: admin
