@@ -36,7 +36,7 @@ Resources:
             Iops: 20000
       Tags:
         - Key: Environment
-          Value: prod
+          Value: Prod
         - Key: Service
           Value: web-app
 
@@ -49,6 +49,8 @@ Resources:
       Tags:
         - Key: Environment
           Value: Prod
+        - Key: Service
+          Value: web-app
 
   NewWebAppVolumeAttachment2:
     Type: AWS::EC2::VolumeAttachment
