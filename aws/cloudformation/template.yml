@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: 'Converted from Terraform configuration'
 
 Resources:
-  MyWebApp:
+  MyWebApp2:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-005e54dee72cc1d00
@@ -18,7 +18,7 @@ Resources:
         - Key: Service
           Value: web-app
 
-  MyHelloWorld:
+  MyHelloWorld2:
     Type: AWS::Lambda::Function
     Properties:
       FunctionName: test
@@ -30,7 +30,7 @@ Resources:
         - Key: Environment
           Value: Prod
 
-  NewWebApp:
+  NewWebApp2:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-005e54dee72cc1d00
@@ -52,7 +52,7 @@ Resources:
         - Key: Service
           Value: web-app
 
-  NewWebAppRootVolume:
+  NewWebAppRootVolume2:
     Type: AWS::EC2::Volume
     Properties:
       Size: 100
@@ -62,14 +62,14 @@ Resources:
         - Key: Environment
           Value: production
 
-  NewWebAppVolumeAttachment:
+  NewWebAppVolumeAttachment2:
     Type: AWS::EC2::VolumeAttachment
     Properties:
       Device: /dev/sdc
       InstanceId: !Ref NewWebApp
       VolumeId: !Ref NewWebAppRootVolume
 
-  MyDB:
+  MyDB2:
     Type: AWS::RDS::DBInstance
     Properties:
       DBInstanceIdentifier: mydb
