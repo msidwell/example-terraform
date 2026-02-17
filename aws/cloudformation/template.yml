@@ -14,21 +14,9 @@ Resources:
             DeleteOnTermination: true
       Tags:
         - Key: Environment
-          Value: production
+          Value: Prod
         - Key: Service
           Value: web-app
-
-  MyHelloWorld2:
-    Type: AWS::Lambda::Function
-    Properties:
-      FunctionName: test
-      Role: arn:aws:iam::123123123123:role/lambda-execution-role
-      MemorySize: 512
-      ImageUri: test
-      PackageType: Image
-      Tags:
-        - Key: Environment
-          Value: Prod
 
   NewWebApp2:
     Type: AWS::EC2::Instance
@@ -60,7 +48,7 @@ Resources:
       AvailabilityZone: us-east-1a
       Tags:
         - Key: Environment
-          Value: production
+          Value: Prod
 
   NewWebAppVolumeAttachment2:
     Type: AWS::EC2::VolumeAttachment
@@ -77,6 +65,8 @@ Resources:
       StorageType: gp3
       Engine: postgres
       EngineVersion: '11.14'
+      StorageEncrypted: true
+      CopyTagsToSnapshot: true
       DBInstanceClass: db.t4g.medium
       DBName: mydb
       MasterUsername: admin
