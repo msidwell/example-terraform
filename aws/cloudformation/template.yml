@@ -14,7 +14,7 @@ Resources:
             DeleteOnTermination: true
       Tags:
         - Key: Environment
-          Value: Prod
+          Value: Production
         - Key: Service
           Value: web-app
 
@@ -36,7 +36,7 @@ Resources:
             Iops: 20000
       Tags:
         - Key: Environment
-          Value: Prod
+          Value: Production
         - Key: Service
           Value: web-app
 
@@ -48,7 +48,7 @@ Resources:
       AvailabilityZone: us-east-1a
       Tags:
         - Key: Environment
-          Value: Prod
+          Value: Production
         - Key: Service
           Value: web-app
 
@@ -84,7 +84,7 @@ Resources:
       PubliclyAccessible: false
       Tags:
         - Key: Environment
-          Value: prodd
+          Value: prod
         - Key: Service
           Value: web-app
     DeletionPolicy: Delete
