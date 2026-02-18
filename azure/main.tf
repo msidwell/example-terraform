@@ -13,7 +13,7 @@ resource "azurerm_linux_virtual_machine" "my_linux_vm" {
   size = "Standard_F16s" # <<<<<<<<<< Try changing this to Standard_F16s_v2 to compare the costs
 
   tags = {
-    Environment = "production"
+    Environment = "Production"
     Service     = "web-app"
   }
 
@@ -44,7 +44,7 @@ resource "azurerm_service_plan" "my_app_service" {
   worker_count = 4 # <<<<<<<<<< Try changing this to 8 to compare the costs
 
   tags = {
-    Environment = "Prod"
+    Environment = "Production"
     Service     = "web-app"
   }
 }
@@ -59,6 +59,37 @@ resource "azurerm_linux_function_app" "my_function" {
   site_config {}
 
   tags = {
-    Environment = "Prod"
+    Environment = "Production"
+  }
+}
+
+resource "azurerm_linux_virtual_machine" "new_app_vm" {
+  location            = "eastus"
+  name                = "test"
+  resource_group_name = "test"
+  admin_username      = "testuser"
+  admin_password      = "Testpa5s"
+
+  size = "Standard_D8as_v4"
+
+  tags = {
+    Environment = "Production"
+    Service     = "web-app"
+  }
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  network_interface_ids = [
+    "/subscriptions/123/resourceGroups/testrg/providers/Microsoft.Network/networkInterfaces/testnic",
+  ]
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
   }
 }

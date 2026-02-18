@@ -2,11 +2,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: 'Converted from Terraform configuration'
 
 Resources:
-  MyWebApp:
+  MyWebApp2:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-005e54dee72cc1d00
-      InstanceType: m3.xlarge
+      InstanceType: m3.2xlarge
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
           Ebs:
@@ -14,27 +14,15 @@ Resources:
             DeleteOnTermination: true
       Tags:
         - Key: Environment
-          Value: production
+          Value: Production
         - Key: Service
           Value: web-app
 
-  MyHelloWorld:
-    Type: AWS::Lambda::Function
-    Properties:
-      FunctionName: test
-      Role: arn:aws:iam::123123123123:role/lambda-execution-role
-      MemorySize: 512
-      ImageUri: test
-      PackageType: Image
-      Tags:
-        - Key: Environment
-          Value: Prod
-
-  NewWebApp:
+  NewWebApp2:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-005e54dee72cc1d00
-      InstanceType: m3.2xlarge
+      InstanceType: m3.4xlarge
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
           Ebs:
@@ -48,11 +36,11 @@ Resources:
             Iops: 20000
       Tags:
         - Key: Environment
-          Value: prod
+          Value: Production
         - Key: Service
           Value: web-app
 
-  NewWebAppRootVolume:
+  NewWebAppRootVolume2:
     Type: AWS::EC2::Volume
     Properties:
       Size: 100
@@ -60,23 +48,32 @@ Resources:
       AvailabilityZone: us-east-1a
       Tags:
         - Key: Environment
-          Value: production
+          Value: Production
+        - Key: Service
+          Value: web-app
 
-  NewWebAppVolumeAttachment:
+  NewWebAppVolumeAttachment2:
     Type: AWS::EC2::VolumeAttachment
     Properties:
       Device: /dev/sdc
       InstanceId: !Ref NewWebApp
       VolumeId: !Ref NewWebAppRootVolume
 
-  MyDB:
+  MyDB2:
     Type: AWS::RDS::DBInstance
     Properties:
       DBInstanceIdentifier: mydb
       AllocatedStorage: 20
       StorageType: gp3
       Engine: postgres
-      EngineVersion: '11.13'
+      EngineVersion: '11.14'
+      StorageEncrypted: true
+      CopyTagsToSnapshot: true
+      CloudwatchLogsExportConfiguration:
+        EnableLogTypes:
+          - "error"
+          - "slowquery"
+        DisableLogTypes: []
       DBInstanceClass: db.t4g.medium
       DBName: mydb
       MasterUsername: admin
@@ -87,7 +84,7 @@ Resources:
       PubliclyAccessible: false
       Tags:
         - Key: Environment
-          Value: production
+          Value: Production
         - Key: Service
           Value: web-app
     DeletionPolicy: Delete
