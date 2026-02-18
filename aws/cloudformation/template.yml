@@ -84,7 +84,7 @@ Resources:
       PubliclyAccessible: false
       Tags:
         - Key: Environment
-          Value: prod
+          Value: Production
         - Key: Service
           Value: web-app
     DeletionPolicy: Delete

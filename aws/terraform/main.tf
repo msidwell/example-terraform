@@ -77,7 +77,7 @@ resource "aws_db_instance" "mydb" {
   publicly_accessible     = false
 
   tags = {
-    Environment = "Production"
+    Environment = "prod"
     Service     = "web-app"
   }
 }
