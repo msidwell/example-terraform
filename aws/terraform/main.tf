@@ -47,6 +47,7 @@ resource "aws_instance" "new_web_app" {
 
   volume_tags = {
     Environment = "Production"
+    Service     = "web-app"
   }
 
   root_block_device {
